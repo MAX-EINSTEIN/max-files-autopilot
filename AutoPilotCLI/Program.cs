@@ -1,3 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿namespace AutoPilot.CLI;
 
-AutoPilotCore.FilesMonitor.WatchDirectory("C:/Users/default/Downloads");
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Core.FileSystemMonitor.WatchDirectory("C:/Users/default/Downloads");
+    }
+}
