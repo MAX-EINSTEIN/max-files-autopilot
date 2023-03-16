@@ -31,7 +31,7 @@ public static class ArgumentsHandler
     private static int HandleOpenOptions(OpenOptions opts)
     {
         if (opts.FileToOpen != null)
-            System.Console.WriteLine("Opening File: {0}", opts.FileToOpen);
+            Core.FileSystemMonitor.OpenFile(opts.FileToOpen);
 
         return ((int)HandlerResults.SUCCESS);
     }
