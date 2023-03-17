@@ -24,14 +24,14 @@ public static class ArgumentsHandler
                 Core.FileSystemMonitor.WatchDirectory(directory);
         }
 
-        return 1;
+        return (int)HandlerResults.SUCCESS;
     }
 
 
     private static int HandleOpenOptions(OpenOptions opts)
     {
         if (opts.FileToOpen != null)
-            Core.FileSystemMonitor.OpenFile(opts.FileToOpen);
+            Core.FileManager.OpenFile(opts.FileToOpen);
 
         return ((int)HandlerResults.SUCCESS);
     }
