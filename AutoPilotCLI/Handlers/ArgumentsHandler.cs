@@ -6,6 +6,8 @@ public static class ArgumentsHandler
 {
     public static void Initialize(string[] args)
     {
+        MonitorOptions monitorOptions = new MonitorOptions();
+
         CommandLine.Parser.Default
         .ParseArguments<MonitorOptions, OpenOptions>(args)
         .MapResult(
@@ -18,11 +20,10 @@ public static class ArgumentsHandler
     private static int HandleMonitorOptions(MonitorOptions opts)
     {
         // handle options
-        if (opts.DirectoriesToMonitor != null)
-        {
-            foreach (var directory in opts.DirectoriesToMonitor)
-                Core.FileSystemMonitor.WatchDirectory(directory);
-        }
+        if (opts.DirectoriesToMonitor == null) return (int)HandlerResults.FAILURE;
+
+        var directory = opts.DirectoriesToMonitor.ToList().First();
+        Core.FileSystemMonitor.WatchDirectory(directory);
 
         return (int)HandlerResults.SUCCESS;
     }
